@@ -1,4 +1,4 @@
-# Project Description
+# SQL Project Description
 
 The goal of this project is to collect and analyze data that helps track the **dynamics of account creation**, **user activity through emails** (sent, opened, clicked), and evaluate behavior in categories such as **sending interval, account verification, and subscription status**.  
 This data enables comparison of user activity across countries, identification of **key markets**, and **segmentation of users** by various parameters.
