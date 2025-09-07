@@ -1,4 +1,4 @@
--- інформація про листи
+-- information about messages
 with message as(
 select date_add(s.date, interval es.sent_date day) as date,
 sp.country,
@@ -27,7 +27,7 @@ a.is_verified,
 a.is_unsubscribed),
 
 
--- інформація про акаунти
+-- information about accounts
 account as(
 select s.date, sp.country,
 send_interval,
@@ -50,7 +50,7 @@ is_verified,
 is_unsubscribed),
 
 
--- обєднання акаунтів та листів
+-- join message and accounts
 message_account as (
 select *
 from message
@@ -60,7 +60,7 @@ from account
 ),
 
 
--- загальна кількість створених акаунтів та відправлених листів
+-- total count created accounts and send messages 
 total_cnt as(
 select date, country,
 send_interval,
@@ -75,7 +75,7 @@ group by 1,2,3,4,5
 ),
 
 
--- загальна кількість створених акаунтів та відправлених листів по країні;
+-- total number of accounts created and emails sent per country
 total_country_cnt as (
 select date, country,
 send_interval,
@@ -91,7 +91,7 @@ from total_cnt
 ),
 
 
---рахуємо ранки для акаунтів та листів
+--counting up the accounts and letters
 rank_total as(
 select date, country,
 send_interval,
@@ -109,7 +109,7 @@ from total_country_cnt
 )
 
 
--- основний запит
+-- main query
 select *
 from rank_total
 where rank_total_country_account_cnt <= 10
